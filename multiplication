@@ -1,0 +1,68 @@
+print ('Enter Sign for the first number: ')
+s1=input()
+print ('Enter exponent for the first number: in this form ')
+e1=input()
+e1=str(e1)
+print ('Enter Mantissa for the first number: ')
+m1=input()
+m1=str(m1)
+print ('Enter Sign for the second number: ')
+s2=input()
+print ('Enter exponent for the second number: ')
+e2=input()
+e2=str(e2)
+print ('Enter Mantissa for the second number: ')
+m2=input()
+m2=str(m2)
+if (e1=="01111111" and m1=="00000000000000000000000"):
+    print ('The Result is 0 00000000 00000000000000000000000')
+elif(e2=="01111111" and m2=="00000000000000000000000"):
+   print ('The Result is 0 00000000 00000000000000000000000')
+s1=int(s1)
+s2=int(s2)
+e1=int(e1,2)
+e2=int(e2,2)
+m1=int(m1,2)
+m2=int(m2,2)
+e3=bin(e1+e2)
+e3=int(e3,2)
+e4=bin(127)
+e4=int(e4,2)
+e5=bin(-126)
+e5=int(e5,2)
+e3=bin(e3-e4)
+e3=int(e3,2)
+m3=bin(m1*m2)
+m3=str(m3)
+def normalise(a):
+    i=a.index('1')
+    if(i!=2):
+        m7=a[2:i] #extracting the exponent part
+        m3=a[i:] #
+        #print (m7)
+        m6=bin(len(m7))
+        #m7=bin(m7)
+        e3=bin(e3+m6)
+
+#if (e3>e4):
+#   print ('Exponent Overflow')
+#if (e3<e5):
+ #  print ('Exponent Underflow')
+
+if (len(m3)>23):
+    normalise(m3)
+
+    
+m3=str(m3)
+m3=m3[2:25]
+e3=bin(e3)
+e3=e3[2:]
+e3=str(e3)
+if (s1==0 and s2==0):
+    print('0 ', e3,' ',m3)    
+elif (s1==(-1) and s2==(-1)):
+    print ('1 ', e3,' ',m3)
+else:
+    print ('1 ', e3,' ',m3)
+print ("Exponent",e3)
+print ("Mantissa",m3)
